@@ -5,11 +5,25 @@ import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
-app.use(express.json()); // pour lire le JSON envoyé dans req.body
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Bienvenue sur l'API des étudiants",
+    routes: [
+      "GET /etudiants",
+      "GET /etudiants/:id",
+      "POST /etudiants",
+      "PUT /etudiants/:id",
+      "PATCH /etudiants/:id",
+      "DELETE /etudiants/:id",
+    ],
+  });
+});
 
 app.use("/etudiants", etudiantsRoutes);
 
-// Ordre important : notFound puis errorHandler, toujours en dernier
 app.use(notFound);
 app.use(errorHandler);
 
