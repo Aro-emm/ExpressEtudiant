@@ -1,7 +1,14 @@
 import app from "./app";
+import { testConnection } from "./config/database";
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}`);
-});
+async function startServer() {
+  await testConnection();
+
+  app.listen(PORT, () => {
+    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  });
+}
+
+startServer();
