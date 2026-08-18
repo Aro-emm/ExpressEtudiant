@@ -1,11 +1,16 @@
 import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 import etudiantsRoutes from "./routes/etudiants.routes";
+import authRoutes from "./routes/auth.routes";
 import { notFound } from "./middlewares/notFound";
 import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -22,6 +27,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/auth", authRoutes);
 app.use("/etudiants", etudiantsRoutes);
 
 app.use(notFound);

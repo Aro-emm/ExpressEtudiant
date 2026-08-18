@@ -1,0 +1,29 @@
+import { Request, Response } from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { users } from '../data/users.data';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
+
+export async function login(req: Request, res: Response) {
+  const { email, password } = req.body as { email?: string; password?: string };
+  if (!email || !password) return res.status(400).json({ message: 'Email and password required' });
+
+  const user = users.find((u) => u.email === email);
+  if (!user) return res.status(401).json({ message: 'Invalid credentials' });
+
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) return res.status(401).json({ message: 'Invalid credentials' });
+
+  const payload = { userId: user.id, role: user.role };
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+
+  // Set cookie (httpOnly) and also return token in body for demo purposes
+  res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax' });
+  res.json({ token });
+}
+
+export function logout(req: Request, res: Response) {
+  res.clearCookie('token');
+  res.json({ message: 'Logged out' });
+}
