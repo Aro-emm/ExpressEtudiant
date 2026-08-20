@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { EtudiantInput, EtudiantPartialInput } from "../Model/etudiant.model";
+import { EtudiantInput, EtudiantPartialInput } from "../models/etudiantModel.js";
 import {
   createEtudiantService,
   deleteEtudiantService,
@@ -7,7 +7,7 @@ import {
   getEtudiantByIdService,
   patchEtudiantService,
   updateEtudiantService,
-} from "../Service/etudiant.service";
+} from "../services/etudiantService.js";
 
 export async function getAllEtudiants(req: Request, res: Response, next: NextFunction) {
   try {

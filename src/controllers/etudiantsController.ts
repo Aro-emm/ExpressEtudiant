@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "../middlewares/AppError";
-import { EtudiantInput, EtudiantPartialInput } from "../models/etudiant.model";
-import { query } from "../config/database";
+import { AppError } from "../middlewares/AppError.js";
+import { EtudiantInput, EtudiantPartialInput } from "../models/etudiantModel.js";
+import { query } from "../config/database.js";
 
 // GET /etudiants -> 200
 export async function getAllEtudiants(req: Request, res: Response, next: NextFunction) {

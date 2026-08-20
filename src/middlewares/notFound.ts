@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "./AppError";
+import { AppError } from "./AppError.js";
 
 // Se déclenche si aucune route ne correspond à l'URL demandée
 export function notFound(req: Request, res: Response, next: NextFunction) {

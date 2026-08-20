@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "./AppError";
+import { AppError } from "./AppError.js";
 
 // IMPORTANT : 4 paramètres = Express le reconnaît comme error handler.
 // Doit être branché en DERNIER dans app.ts, après toutes les routes.

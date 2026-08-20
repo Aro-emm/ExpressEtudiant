@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import etudiantsRoutes from "./routes/etudiants.routes";
-import authRoutes from "./routes/auth.routes";
-import { notFound } from "./middlewares/notFound";
-import { errorHandler } from "./middlewares/errorHandler";
+import etudiantsRoutes from "./routes/etudiantsRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import { notFound } from "./middlewares/notFound.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 

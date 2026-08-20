@@ -1,14 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const database_1 = require("./config/database");
+import app from "./app.js";
+import { testConnection } from "./config/database.js";
 const PORT = process.env.PORT || 3000;
 async function startServer() {
-    await (0, database_1.testConnection)();
-    app_1.default.listen(PORT, () => {
+    await testConnection();
+    app.listen(PORT, () => {
         console.log(`Serveur démarré sur http://localhost:${PORT}`);
     });
 }

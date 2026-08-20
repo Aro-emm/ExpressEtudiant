@@ -1,5 +1,5 @@
-import pool from "../config/db";
-import { Etudiant, EtudiantInput, EtudiantPartialInput } from "../Model/etudiant.model";
+import pool from "../config/db.js";
+import { Etudiant, EtudiantInput, EtudiantPartialInput } from "../models/etudiantModel.js";
 
 export async function getAllEtudiantsRepo(): Promise<Etudiant[]> {
   const result = await pool.query<Etudiant>(

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { users } from '../data/users.data';
+import { users } from '../data/usersData.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
 
@@ -9,7 +9,7 @@ export async function login(req: Request, res: Response) {
   const { email, password } = req.body as { email?: string; password?: string };
   if (!email || !password) return res.status(400).json({ message: 'Email and password required' });
 
-  const user = users.find((u) => u.email === email);
+  const user = users.find((userItem) => userItem.email === email);
   if (!user) return res.status(401).json({ message: 'Invalid credentials' });
 
   const match = await bcrypt.compare(password, user.password);

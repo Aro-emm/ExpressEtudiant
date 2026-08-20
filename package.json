@@ -1,10 +1,11 @@
 {
   "name": "api-etudiants",
   "version": "1.0.0",
-  "description": "CRUD REST API - gestion des étudiants",
+  "description": "Student management REST API",
+  "type": "module",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
+    "dev": "nodemon --watch src --ext ts --exec ts-node --esm src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },

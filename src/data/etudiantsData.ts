@@ -1,4 +1,4 @@
-import { Etudiant } from "../models/etudiant.model";
+import { Etudiant } from "../models/etudiantModel.js";
 
 // "Base de données" en mémoire (redémarre à zéro à chaque relance du serveur)
 export const etudiants: Etudiant[] = [

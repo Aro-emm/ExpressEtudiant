@@ -1,5 +1,5 @@
-import { AppError } from "../middlewares/AppError";
-import { EtudiantInput, EtudiantPartialInput } from "../Model/etudiant.model";
+import { AppError } from "../middlewares/AppError.js";
+import { EtudiantInput, EtudiantPartialInput } from "../models/etudiantModel.js";
 import {
   createEtudiantRepo,
   deleteEtudiantRepo,
@@ -7,7 +7,7 @@ import {
   getEtudiantByIdRepo,
   patchEtudiantRepo,
   updateEtudiantRepo,
-} from "../Repository/etudiant.repository";
+} from "../repositories/etudiantRepository.js";
 
 function validateRequiredFields(data: Partial<EtudiantInput>, label: string) {
   const { nom, prenom, email, age } = data;

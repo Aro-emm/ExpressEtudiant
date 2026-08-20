@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { User } from '../models/user.model';
+import { User } from '../models/userModel.js';
 
 // Demo users store (in-memory). Passwords hashed at startup for convenience.
 export const users: User[] = [
