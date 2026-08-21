@@ -18,9 +18,9 @@ export async function login(req: Request, res: Response) {
   const payload = { userId: user.id, role: user.role };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
 
-  // Set cookie (httpOnly) and also return token in body for demo purposes
+  // Keep the session token in an httpOnly cookie so client-side code cannot read it.
   res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax' });
-  res.json({ token });
+  res.json({ message: 'Logged in successfully' });
 }
 
 export function logout(req: Request, res: Response) {
